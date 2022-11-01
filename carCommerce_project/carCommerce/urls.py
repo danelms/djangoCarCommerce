@@ -19,5 +19,6 @@ import carComm_app.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', carComm_app.views.home, name = 'home'),
+    path('home/', carComm_app.views.home, name = 'home'),
+    path('', carComm_app.views.home, name = ''),
 ]
