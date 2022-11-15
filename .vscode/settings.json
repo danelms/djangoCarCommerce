@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./carCommerce_project/carComm_app"
+    ]
+}

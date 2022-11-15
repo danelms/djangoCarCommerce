@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import Listing
 
 def home(request):
-    return render(request, 'home.html')
+    listings = Listing.objects.all()
+    return render(request, 'home.html', {'listings':listings})
