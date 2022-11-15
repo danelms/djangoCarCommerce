@@ -14,6 +14,7 @@ class Listing(models.Model):
     registration = models.CharField(max_length=10)
     colour = models.CharField(max_length=50)
     year = models.IntegerField(validators=[MaxValueValidator(currentYear), MinValueValidator(1769)])
+    mileage = models.IntegerField(validators=[MinValueValidator(1)])
     thumbnail = models.ImageField(upload_to='images/')
     description = models.TextField(max_length=2500)
     price = models.FloatField(validators=[MinValueValidator(0.01)])
