@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Listings{% endblock title %}
+
+{% block navbar %}
+<li class="dropdown"><a href="#"><span>Filter by</span> <i class="bi bi-chevron-down"></i></a>
+    <ul>
+      <li class="dropdown"><a href="#"><span>Price</span> <i class="bi bi-chevron-right"></i></a>
+        <ul>
+          <li><a href="#">Highest to lowest</a></li>
+          <li><a href="#">Lowest to highest</a></li>
+        </ul>          
+      </li>
+      <li class="dropdown"><a href="#"><span>Colour</span> <i class="bi bi-chevron-right"></i></a>
+        <ul>
+          {% for listing in listings %}
+            <li><a href="#">{{listing.colour|capfirst}}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="dropdown"><a href="#"><span>Mileage</span> <i class="bi bi-chevron-right"></i></a>
+        <ul>
+          <li><a href="#">Highest to lowest</a></li>
+          <li><a href="#">Lowest to highest</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a href="#"><span>Make</span> <i class="bi bi-chevron-right"></i></a>
+        <ul>
+          {% for listing in listings %}
+            <li><a href="#">{{listing.make|capfirst}}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+    </ul>
+  </li>
+{% endblock navbar %}
+
+{% block content %}
+<main id="main">
+    <!-- ======= All car listings section ======= -->
+    <div id="about" class="about-area area-padding" style="background-color:white;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="section-headline text-center">
+                <h2><br>All cars</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <!-- All car listings-->
+            {% for listing in listings reversed %}
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" src="{{listing.thumbnail.url}}" alt="Car thumbnail" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                        <!-- Product name -->
+                        <h5 class="fw-bolder">{{listing.make|capfirst}} {{listing.model|capfirst}}</h5>
+                        <!-- Product price -->
+                        £{{listing.price}}<br>
+                        <!-- Product age -->
+                        Year: {{listing.year}}<br>
+                        <!-- Product mileage -->
+                        Mileage: {{listing.mileage}} miles
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">                                    
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View details</a></div><br>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+          <!-- End car listings-->
+          </div>
+        </div>
+      </div>
+</main>
+{% endblock content %}

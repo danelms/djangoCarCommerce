@@ -1,99 +1,17 @@
+{% extends 'base.html' %} 
 
-<!DOCTYPE html>
-<html lang="en">
 {% load static %}
 {% load mathfilters %}
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+{% block title %}carCommerce - Home{% endblock title %} 
 
-  <title>CarCommerce</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+{% block navbar %}
+<li><a class="nav-link scrollto" href="#about">Recently added</a></li>
+<li><a href="{% url 'listings' %}">View all cars</a></li>
+<li><a class="nav-link scrollto" href="#services">About us</a></li>
+{% endblock navbar %}
 
-  <!-- Favicons -->
-  <link href="{% static "assets/img/favicon.png" %}" rel="icon">
-  <link href="{% static "assets/img/apple-touch-icon.png" %}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{% static "assets/vendor/animate.css/animate.min.css" %}" rel="stylesheet">
-  <link href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-  <link href="{% static "assets/vendor/bootstrap-icons/bootstrap-icons.css" %}" rel="stylesheet">
-  <link href="{% static "assets/vendor/boxicons/css/boxicons.min.css" %}" rel="stylesheet">
-  <link href="{% static "assets/vendor/glightbox/css/glightbox.min.css" %}" rel="stylesheet">
-  <link href="{% static "assets/vendor/swiper/swiper-bundle.min.css" %}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{% static "assets/css/style.css" %}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: eBusiness - v4.9.1
-  * Template URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex justify-content-between">
-
-      <div class="logo">
-        <h1><a href="index.html"><span>Car</span>Commerce<span><i class="bi bi-car-front"></i></span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="{% static "assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Recently added</a></li>
-          <li><a href="">View all cars</a></li>
-          <li><a class="nav-link scrollto" href="#services">About us</a></li>
-          <li class="dropdown"><a href="#"><span>Filter by</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li class="dropdown"><a href="#"><span>Price</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Highest to lowest</a></li>
-                  <li><a href="#">Lowest to highest</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="#"><span>Colour</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  {% for listing in listings %}
-                    <li><a href="#">{{listing.colour}}</a></li>
-                  {% endfor %}
-                </ul>
-              </li>
-              <li class="dropdown"><a href="#"><span>Mileage</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Highest to lowest</a></li>
-                  <li><a href="#">Lowest to highest</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="#"><span>Make</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  {% for listing in listings %}
-                    <li><a href="#">{{listing.make}}</a></li>
-                  {% endfor %}
-                </ul>
-              </li>
-              <li><a href="#">PLACEHOLDER</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
+{% block content %}
 
   <!-- ======= Carousel section ======= -->
   <section id="hero">
@@ -110,7 +28,7 @@
                 <h2 class="animate__animated animate__fadeInDown">Quality second-hand cars</h2>
                 <p class="animate__animated animate__fadeInUp">All our cars are fully inspected before listing, and come with a 1-year warranty</p>
                 <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">View recently added</a>
-                <a href="#" class="btn-get-started scrollto animate__animated animate__fadeInUp">View all cars</a>
+                <a href="{% url 'listings' %}" class="btn-get-started scrollto animate__animated animate__fadeInUp">View all cars</a>
               </div>
             </div>
           </div>
@@ -121,7 +39,7 @@
                 <h2 class="animate__animated animate__fadeInDown">Fantastic choice</h2>
                 <p class="animate__animated animate__fadeInUp">We stock a wide variety of cars, from classics to the almost-new</p>
                 <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">View recently added</a>
-                <a href="#" class="btn-get-started scrollto animate__animated animate__fadeInUp">View all cars</a>
+                <a href="{% url 'listings' %}" class="btn-get-started scrollto animate__animated animate__fadeInUp">View all cars</a>
               </div>
             </div>
           </div>
@@ -132,7 +50,7 @@
                 <h2 class="animate__animated animate__fadeInDown">Helping you save <i class="bi bi-piggy-bank-fill"></i></h2>
                 <p class="animate__animated animate__fadeInUp">All our cars are competitively priced, considering their great condition</p>
                 <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">View recently added</a>
-                <a href="#" class="btn-get-started scrollto animate__animated animate__fadeInUp">View all cars</a>
+                <a href="{% url 'listings' %}" class="btn-get-started scrollto animate__animated animate__fadeInUp">View all cars</a>
               </div>
             </div>
           </div>
@@ -153,7 +71,7 @@
 
   <main id="main">
 
-    <!-- ======= All cars section ======= -->
+    <!-- ======= Recent car listings section ======= -->
     <div id="about" class="about-area area-padding">
       <div class="container">
         <div class="row">
@@ -165,7 +83,7 @@
         </div>
         <div class="row">
           <!-- Recent car listings-->
-          {% with start=listings|length|sub:3|stringformat:"s" %}
+          {% with start=listings|length|sub:4|stringformat:"s" %}
             {% with end=listings|length|stringformat:"s" %}
               {% with listslice=start|add:":"|add:end %}
                 {% for listing in listings|slice:listslice reversed %}
@@ -177,7 +95,7 @@
                       <div class="card-body p-4">
                         <div class="text-center">
                           <!-- Product name -->
-                          <h5 class="fw-bolder">{{listing.make}} {{listing.model}}</h5>
+                          <h5 class="fw-bolder">{{listing.make|capfirst}} {{listing.model|capfirst}}</h5>
                           <!-- Product price -->
                           £{{listing.price}}<br>
                           <!-- Product age -->
@@ -411,84 +329,4 @@
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer>
-    <div class="footer-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="footer-content">
-              <div class="footer-head">
-                <div class="footer-logo">
-                  <h2><span>Car</span>Commerce<span><i class="bi bi-car-front"></i></span></h2>
-                </div>
-
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
-                <div class="footer-icons">
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end single footer -->
-          <div class="col-md-4">
-            <div class="footer-content">
-              <div class="footer-head">
-                <div class="flicker-img">
-                  <!-- left blank to separate footer content -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end single footer -->
-          <div class="col-md-4">
-            <div class="footer-content">
-              <div class="footer-head">
-                <h4>information</h4>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                </p>
-                <div class="footer-contacts">
-                  <p><span>Tel:</span> +123 456 789</p>
-                  <p><span>Email:</span> enquiries@carcommerce.uk</p>
-                  <p><span>Working Hours:</span> 9am-5pm</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-area-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="copyright text-center">
-              <p>
-                &copy; Copyright <strong>CarCommerce</strong>. All Rights Reserved
-              </p>
-            </div>
-            <div class="credits">
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>, adapted by ARU Student
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="{% static "assets/vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
-  <script src="{% static "assets/vendor/glightbox/js/glightbox.min.js" %}"></script>
-  <script src="{% static "assets/vendor/isotope-layout/isotope.pkgd.min.js" %}"></script>
-  <script src="{% static "assets/vendor/swiper/swiper-bundle.min.js" %}"></script>
-  <script src="{% static "assets/vendor/php-email-form/validate.js" %}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{% static "assets/js/main.js" %}"></script>
-
-</body>
-
-</html>
+ {% endblock content %}

@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', carComm_app.views.home, name = 'home'),
     path('', carComm_app.views.home, name = 'home'),
+    path('listings/', carComm_app.views.listings, name = 'listings'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
