@@ -34,11 +34,11 @@ class ListingImage(models.Model):
 
 class Queries(models.Model):
     def uniqueColours() -> list:
-        uniqueColours = Listing.objects.all().values_list('colour', flat=True).distinct()
-        
+        uniqueColours = Listing.objects.all().order_by('colour').values_list('colour', flat=True).distinct()
+
         return uniqueColours
 
     def uniqueMakes() -> list:
-        uniqueMakes = Listing.objects.all().values_list('make', flat=True).distinct()
+        uniqueMakes = Listing.objects.all().order_by('make').values_list('make', flat=True).distinct()
         
         return uniqueMakes
