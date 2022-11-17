@@ -6,9 +6,11 @@
 {% block title %}carCommerce - Home{% endblock title %} 
 
 {% block navbar %}
+<li><a class="nav-link scrollto active" href="{% url 'home' %}">Home</a></li>
 <li><a class="nav-link scrollto" href="#about">Recently added</a></li>
 <li><a href="{% url 'listings' %}">View all cars</a></li>
 <li><a class="nav-link scrollto" href="#services">About us</a></li>
+<li><a href="{% url 'contact' %}">Contact</a></li>
 {% endblock navbar %}
 
 {% block content %}
@@ -116,6 +118,7 @@
           {% endwith %}
         <!-- End car listings-->
         </div>
+        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'listings' %}" style="font-size:20pt;">View all cars</a></div><br>
       </div>
     </div>
 
@@ -135,12 +138,12 @@
             <div class="about-move">
               <div class="services-details">
                 <div class="single-services">
-                  <a class="services-icon" href="#">
-                    <i class="bi bi-briefcase"></i>
+                  <a class="services-icon">
+                    <i class="bi bi-wrench-adjustable"></i>
                   </a>
-                  <h4>Expert Coder</h4>
+                  <h4>Expert mechanics</h4>
                   <p>
-                    will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
+                    Our team give each car a full inspection prior to listing. We won't sell any car that doesn't qualify for our 1-year warranty. That's the CarCommerce guarantee!
                   </p>
                 </div>
               </div>
@@ -151,12 +154,12 @@
             <div class="about-move">
               <div class="services-details">
                 <div class="single-services">
-                  <a class="services-icon" href="#">
-                    <i class="bi bi-card-checklist"></i>
+                  <a class="services-icon">
+                    <i class="bi bi-emoji-smile-fill"></i>
                   </a>
-                  <h4>Creative Designer</h4>
+                  <h4>Friendly sales team</h4>
                   <p>
-                    will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
+                    Visit us in-store to benefit from our award-winning customer service. Alternatively, you can speak to the same team via email or over the phone. See our <a href="#">Contact page</a> for more details.
                   </p>
                 </div>
               </div>
@@ -168,65 +171,12 @@
             <div class=" about-move">
               <div class="services-details">
                 <div class="single-services">
-                  <a class="services-icon" href="#">
-                    <i class="bi bi-bar-chart"></i>
+                  <a class="services-icon">
+                    <i class="bi bi-search-heart-fill"></i>
                   </a>
-                  <h4>Wordpress Developer</h4>
+                  <h4>Astounding choice</h4>
                   <p>
-                    will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-                    <i class="bi bi-binoculars"></i>
-                  </a>
-                  <h4>Social Marketer </h4>
-                  <p>
-                    will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <!-- End Left services -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-                    <i class="bi bi-brightness-high"></i>
-                  </a>
-                  <h4>Seo Expart</h4>
-                  <p>
-                    will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <!-- End Left about -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-                    <i class="bi bi-calendar4-week"></i>
-                  </a>
-                  <h4>24/7 Support</h4>
-                  <p>
-                    will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
+                    From MINI to Rolls-Royce. From budget to luxury.<br>Our amazing selection makes it incredibly easy to find a car you'll love, whatever you're looking for.
                   </p>
                 </div>
               </div>
@@ -237,95 +187,7 @@
       </div>
     </div><!-- End About Us Section -->
     
-    <!-- ======= Contact Section ======= -->
-    <div id="contact" class="contact-area">
-      <div class="contact-inner area-padding">
-        <div class="contact-overly"></div>
-        <div class="container ">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="section-headline text-center">
-                <h2>Contact us</h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <!-- Start contact icon column -->
-            <div class="col-md-4">
-              <div class="contact-icon text-center">
-                <div class="single-icon">
-                  <i class="bi bi-phone"></i>
-                  <p>
-                    Call: +1 5589 55488 55<br>
-                    <span>Monday-Friday (9am-5pm)</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- Start contact icon column -->
-            <div class="col-md-4">
-              <div class="contact-icon text-center">
-                <div class="single-icon">
-                  <i class="bi bi-envelope"></i>
-                  <p>
-                    Email: enquiries@carcommerce.uk<br>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- Start contact icon column -->
-            <div class="col-md-4">
-              <div class="contact-icon text-center">
-                <div class="single-icon">
-                  <i class="bi bi-geo-alt"></i>
-                  <p>
-                    Location: 123 Non-existent Street<br>
-                    <span>King's Lynn, Norfolk</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-
-            <!-- Start Google Map -->
-            <div class="col-md-6">
-              <!-- Start Map -->
-              <iframe src="https://maps.google.com/maps?q=king's%20lynn&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed" id="gmap_canvas" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
-              <!-- End Map -->
-            </div>
-            <!-- End Google Map -->
-
-            <!-- Start  contact -->
-            <div class="col-md-6">
-              <div class="form contact-form">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                  <div class="form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                  </div>
-                  <div class="form-group mt-3">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" required>
-                  </div>
-                  <div class="form-group mt-3">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                  </div>
-                  <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                  </div>
-                  <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                  </div>
-                  <div class="text-center"><button type="submit">Send Message</button></div>
-                </form>
-              </div>
-            </div>
-            <!-- End Left contact -->
-          </div>
-        </div>
-      </div>
-    </div><!-- End Contact Section -->
+    
 
   </main><!-- End #main -->
 

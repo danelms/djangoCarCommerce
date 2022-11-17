@@ -11,3 +11,6 @@ def listings(request):
     listings = Listing.objects.all()
     return render(request, 'listings.html', {'listings':listings, 'uniqueColours':uniqueColours, 'uniqueMakes':uniqueMakes})
 
+def contact(request):
+    return render(request, 'contact.html')
+
