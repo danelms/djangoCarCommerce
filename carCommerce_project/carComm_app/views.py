@@ -14,3 +14,6 @@ def listings(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def carDetails(request):
+    return render(request, 'carDetails.html')
+
