@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-CSRF_TRUSTED_ORIGINS = ["https://8000-danelms-djangocarcommer-m86u9gpnvb7.ws-eu74.gitpod.io"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://8000-danelms-djangocarcommer-m86u9gpnvb7.ws-eu74.gitpod.io",
+    "https://8000-danelms-djangocarcommer-m86u9gpnvb7.ws-eu75.gitpod.io"
+    ]
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
