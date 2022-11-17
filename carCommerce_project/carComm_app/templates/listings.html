@@ -14,8 +14,8 @@
       </li>
       <li class="dropdown"><a href="#"><span>Colour</span> <i class="bi bi-chevron-right"></i></a>
         <ul>
-          {% for listing in listings %}
-            <li><a href="#">{{listing.colour|capfirst}}</a></li>
+          {% for colour in uniqueColours %}
+            <li><a href="#">{{colour|capfirst}}</a></li>
           {% endfor %}
         </ul>
       </li>
@@ -27,8 +27,8 @@
       </li>
       <li class="dropdown"><a href="#"><span>Make</span> <i class="bi bi-chevron-right"></i></a>
         <ul>
-          {% for listing in listings %}
-            <li><a href="#">{{listing.make|capfirst}}</a></li>
+          {% for make in uniqueMakes %}
+            <li><a href="#">{{make|capfirst}}</a></li>
           {% endfor %}
         </ul>
       </li>

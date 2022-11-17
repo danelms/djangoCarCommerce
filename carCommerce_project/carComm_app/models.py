@@ -22,9 +22,23 @@ class Listing(models.Model):
     def __str__(self) -> str:
         return self.make + " " + self.model + ", " + self.registration
 
+    def getColour() -> str:
+        return self.colour
+
 class ListingImage(models.Model):
     image = models.ImageField(upload_to='images/')
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.listing.make + " " + self.listing.model + ", " + self.listing.registration
+
+class Queries(models.Model):
+    def uniqueColours() -> list:
+        uniqueColours = Listing.objects.all().values_list('colour', flat=True).distinct()
+        
+        return uniqueColours
+
+    def uniqueMakes() -> list:
+        uniqueMakes = Listing.objects.all().values_list('make', flat=True).distinct()
+        
+        return uniqueMakes
