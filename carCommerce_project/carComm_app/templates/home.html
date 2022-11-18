@@ -108,7 +108,7 @@
                       </div>
                       <!-- Product actions-->
                       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">                                    
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View details</a></div><br>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'carDetails' listing.registration %}">View details</a></div><br>
                         </div>
                       </div>
                     </div>
@@ -123,7 +123,7 @@
     </div>
 
     <!-- ======= About Us section ======= -->
-    <div id="services" class="services-area area-padding">
+    <div id="services" class="services-area area-padding" style="padding-bottom: 0;">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -185,6 +185,7 @@
           </div>
         </div>
       </div>
+      <img src="{% static 'assets/img/about1.png' %}" class="img-fluid" alt="About section photo" style="width:100%;margin-top:50px;"/>
     </div><!-- End About Us Section -->
     
     

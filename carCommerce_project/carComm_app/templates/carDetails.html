@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block navbar %}
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="{% url 'listings' %}">View all cars</a></li>
+<li><a href="{% url 'contact' %}">Contact</a></li>
+{% endblock navbar %}
+
+{% block content %}
+
+<main id="main" style="width: 80%;margin-left:10%;padding-top:90px;" >
+    <div class="container" style="padding-bottom:50px;">
+        <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="section-headline services-head text-center">
+                    <h2>{{listing.year}} {{listing.make}} {{listing.model}}</h2>
+                  </div>
+                </div>
+            <h2></h2>
+
+            <img src="{{ listing.thumbnail.url }}" class="mainImage" style="width:100%;margin-bottom:20px;">
+            
+            <h4>£{{listing.price|floatformat:2|intcomma}}</h4>
+            <h4><b>Colour:</b> {{listing.colour|capfirst}}</h4>
+            <h4><b>Mileage:</b> {{listing.mileage|intcomma}} miles</h4>
+            <h4><b>Description:</b></h4>
+            <p>{{listing.description}}</p>
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" style="font-size:20pt;margin-top:25px!important;">Book a test drive</a></div>
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" style="font-size:20pt;margin-top:25px!important;">Buy now</a></div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock content %}

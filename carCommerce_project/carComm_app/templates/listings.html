@@ -35,7 +35,7 @@
       </li>
     </ul>
   </li>
-  <li><a href="{% url 'contact' %}">Contact</a></li>
+<li><a href="{% url 'contact' %}">Contact</a></li>
 {% endblock navbar %}
 
 {% block content %}
@@ -53,7 +53,7 @@
           <div class="row">
             <!-- All car listings-->
             {% for listing in listings reversed %}
-            <div class="col mb-5" style="min-width: 25%;">
+            <div class="col mb-5" style="min-width: 50%;"> 
                 <div class="card h-100">
                     <!-- Product image-->
                     <img class="card-img-top" src="{{listing.thumbnail.url}}" alt="Car thumbnail" />
@@ -72,7 +72,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">                                    
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View details</a></div><br>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'carDetails' listing.registration %}">View details</a></div><br>
                     </div>
                 </div>
             </div>

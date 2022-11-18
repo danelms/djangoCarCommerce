@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'carComm_app',
     'mathfilters',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

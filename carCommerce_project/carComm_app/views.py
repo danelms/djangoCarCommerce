@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 from .models import Listing, Queries
 
 def home(request):
@@ -14,6 +15,11 @@ def listings(request):
 def contact(request):
     return render(request, 'contact.html')
 
-def carDetails(request):
-    return render(request, 'carDetails.html')
+def carDetails(request, registration):
+    try:
+        listing = Listing.objects.get(registration=registration)
+    except Listing.DoesNotExist:
+        raise Http404("Car with registration \"" + registration + "\" not found")
+
+    return render(request, 'carDetails.html', {'listing': listing})
 
