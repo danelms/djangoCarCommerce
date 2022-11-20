@@ -9,6 +9,15 @@
 
 {% block content %}
 
+<style>
+  .carousel-item {
+    object-fit:contain;
+    max-width:100%;
+    max-height:100%;
+    object-position: center bottom;
+  }
+</style>
+
 <main id="main" style="width: 80%;margin-left:10%;padding-top:90px;" >
     <div class="container" style="padding-bottom:50px;">
         <div class="row">
@@ -17,9 +26,34 @@
                     <h2>{{listing.year}} {{listing.make}} {{listing.model}}</h2>
                   </div>
                 </div>
-            <h2></h2>
+            <!-- Carousel -->
+            <section id="hero" style="height:45vw">
+              <div class="hero-container">
+                <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="10000">
+          
+                  <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
+          
+                  <div class="carousel-inner" role="listbox">
+          
+                    <a href="{{listing.thumbnail.url}}"><img class="carousel-item active" src="{{listing.thumbnail.url}}"></a>
+                    
+                    {% for image in listingImages%}
+                    <a href ={{image.image.url}}><img class="carousel-item" src="{{image.image.url}}"></a>
+                    {% endfor %}
 
-            <img src="{{ listing.thumbnail.url }}" class="mainImage" style="width:100%;margin-bottom:20px;">
+                  </div>
+          
+                  <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+                  </a>
+          
+                  <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+                  </a>
+          
+                </div>
+              </div>
+            </section><!-- End Carousel section -->
             
             <h4>£{{listing.price|floatformat:2|intcomma}}</h4>
             <h4><b>Colour:</b> {{listing.colour|capfirst}}</h4>

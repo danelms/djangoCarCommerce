@@ -573,7 +573,6 @@ div#preloader {
 
 #hero .carousel-item::before {
   content: "";
-  background-color: rgba(0, 0, 0, 0.7);
 }
 
 #hero .carousel-container {
