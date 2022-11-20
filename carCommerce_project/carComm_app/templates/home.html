@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load mathfilters %}
+{% load humanize %}
 
 {% block title %}carCommerce - Home{% endblock title %} 
 
@@ -99,11 +100,11 @@
                           <!-- Product name -->
                           <h5 class="fw-bolder">{{listing.make|capfirst}} {{listing.model|capfirst}}</h5>
                           <!-- Product price -->
-                          £{{listing.price}}<br>
+                          £{{listing.price|floatformat:2|intcomma}}<br>
                           <!-- Product age -->
                           Year: {{listing.year}}<br>
                           <!-- Product mileage -->
-                          Mileage: {{listing.mileage}} miles
+                          Mileage: {{listing.mileage|intcomma}} miles
                         </div>
                       </div>
                       <!-- Product actions-->
