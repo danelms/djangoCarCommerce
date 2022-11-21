@@ -25,9 +25,9 @@ def contact(request):
             'message':form.cleaned_data['message'],
             }
             message = "\n".join(body.values())
-
+            email = form.cleaned_data['email_address']
             try:
-                send_mail(message, 'danelms@live.co.uk', ['danelms@live.co.uk'])
+                send_mail("Web enquiry", message, email, ['danelms@live.co.uk'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
         else:

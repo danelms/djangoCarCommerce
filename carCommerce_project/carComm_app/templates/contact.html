@@ -7,6 +7,18 @@
 {% endblock navbar %}
 
 {% block content %}
+
+<style>
+  #id_name, #id_email_address, #id_subject, #id_message {
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+  }
+  button {
+    width:20%;
+    margin-left:40%;
+  }
+</style>
+
 <!-- ======= Contact Section ======= -->
 <div id="contact" class="contact-area">
     <div class="contact-inner area-padding">
@@ -71,7 +83,10 @@
             <form method="POST" style="width:100%;">
               {% csrf_token %}
               {{contactForm.as_p}}
-              <button type="submit">Submit</button>
+              <button type="submit" class="g-recaptcha"
+              data-sitekey="reCAPTCHA_site_key"
+              data-callback='onSubmit'
+              data-action='submit'>Submit</button>
             </form>
           </div>
 
@@ -80,4 +95,5 @@
       </div>
     </div>
   </div><!-- End Contact Section -->
+
   {% endblock content %}
