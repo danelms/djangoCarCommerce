@@ -31,7 +31,7 @@ def contact(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
         else:
-            return redirect (request, "home.html")
+            return redirect(request, 'home')
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'contactForm': form})
