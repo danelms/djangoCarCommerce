@@ -66,32 +66,16 @@
           </div>
           <!-- End Google Map -->
 
-          <!-- Start  contact -->
+          <!-- Start contact -->
           <div class="col-md-6">
-            <div class="form contact-form">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group mt-3">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" required>
-                </div>
-                <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                </div>
-                <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
-                </div>
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
-              </form>
-            </div>
+            <form method="POST" style="width:100%;">
+              {% csrf_token %}
+              {{contactForm.as_p}}
+              <button type="submit">Submit</button>
+            </form>
           </div>
-          <!-- End Left contact -->
+
+          
         </div>
       </div>
     </div>
