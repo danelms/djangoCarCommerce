@@ -1,0 +1,11 @@
+python -m pip install django==3.0.3
+python -m pip install django-mathfilters
+python -m pip install pillow
+python -m pip install requests
+python -m pip install django-recaptcha
+python -m pip install django-filter
+
+REFERENCES
+https://www.geeksforgeeks.org/how-to-add-google-recaptcha-to-django-forms/
+https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend
+https://pypi.org/project/django-filter/
