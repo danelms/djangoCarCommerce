@@ -42,7 +42,6 @@ GOOGLE_RECAPTCHA_SECRET_KEY = '6Ld-kzojAAAAADdAxsILGKUYXof5T0hyOBaJq23q'
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -54,6 +53,8 @@ INSTALLED_APPS = [
     'mathfilters',
     'django.contrib.humanize',
     'captcha',
+    'django_filters',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

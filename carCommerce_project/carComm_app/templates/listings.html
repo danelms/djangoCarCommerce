@@ -1,45 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load crispy_forms_tags %}
 
 {% block title %}Listings{% endblock title %}
 
 {% block navbar %}
 <li><a href="{% url 'home' %}">Home</a></li>
-<li class="dropdown"><a href="#"><span>Filter by</span> <i class="bi bi-chevron-down"></i></a>
-    <ul>
-      <li class="dropdown"><a href="#"><span>Price</span> <i class="bi bi-chevron-right"></i></a>
-        <ul>
-          <li><a href="#">Highest to lowest</a></li>
-          <li><a href="#">Lowest to highest</a></li>
-        </ul>          
-      </li>
-      <li class="dropdown"><a href="#"><span>Colour</span> <i class="bi bi-chevron-right"></i></a>
-        <ul>
-          {% for colour in uniqueColours %}
-            <li><a href="#">{{colour|capfirst}}</a></li>
-          {% endfor %}
-        </ul>
-      </li>
-      <li class="dropdown"><a href="#"><span>Mileage</span> <i class="bi bi-chevron-right"></i></a>
-        <ul>
-          <li><a href="#">Highest to lowest</a></li>
-          <li><a href="#">Lowest to highest</a></li>
-        </ul>
-      </li>
-      <li class="dropdown"><a href="#"><span>Make</span> <i class="bi bi-chevron-right"></i></a>
-        <ul>
-          {% for make in uniqueMakes %}
-            <li><a href="#">{{make|capfirst}}</a></li>
-          {% endfor %}
-        </ul>
-      </li>
-    </ul>
-  </li>
 <li><a href="{% url 'contact' %}">Contact</a></li>
 {% endblock navbar %}
 
 {% block content %}
+<style>
+  .control-label {
+    font-weight: bold;
+  }
+  input {
+    width: 50%;
+  }
+</style>
+
 <main id="main">
     <!-- ======= All car listings section ======= -->
     <div id="about" class="about-area area-padding" style="background-color:white;">
@@ -48,12 +28,16 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="section-headline text-center">
                 <h2><br>All cars</h2>
+                <form method="get" style="margin-bottom:20px;">
+                  {{listingFilter.form|crispy}}
+                  <button class="btn" style="background-color:#3ec1d5;color:white;margin-top:10px;" type="submit">Filter</button>
+                </form>
               </div>
             </div>
           </div>
           <div class="row">
             <!-- All car listings-->
-            {% for listing in listings reversed %}
+            {% for listing in listingFilter.qs reversed %}
             <div class="col mb-5" style="min-width: 50%;"> 
                 <div class="card h-100">
                     <!-- Product image-->

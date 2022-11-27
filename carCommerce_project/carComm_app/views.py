@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from .forms import ContactForm
 from .models import Listing, ListingImage, Queries
+from .filters import ListingFilter
 
 def home(request):
     listings = Listing.objects.all()
@@ -12,7 +13,8 @@ def listings(request):
     uniqueColours = Queries.uniqueColours()
     uniqueMakes = Queries.uniqueMakes()
     listings = Listing.objects.all()
-    return render(request, 'listings.html', {'listings':listings, 'uniqueColours':uniqueColours, 'uniqueMakes':uniqueMakes})
+    listingFilter = ListingFilter(request.GET, queryset=listings)
+    return render(request, 'listings.html', {'listings':listings, 'uniqueColours':uniqueColours, 'uniqueMakes':uniqueMakes, 'listingFilter': listingFilter})
 
 def contact(request):
     if request.method == 'POST':
