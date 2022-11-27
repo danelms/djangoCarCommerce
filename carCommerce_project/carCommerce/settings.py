@@ -35,9 +35,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # RECAPTCHA KEYS
+GOOGLE_RECAPTCHA_SITE_KEY = '6Ld-kzojAAAAAIWTR6l26qhnviKY6RKBMjYH2OUT'
+GOOGLE_RECAPTCHA_SECRET_KEY = '6Ld-kzojAAAAADdAxsILGKUYXof5T0hyOBaJq23q'
 
-GOOGLE_RECAPTCHA_SITE_KEY = '6Lfn-SEjAAAAAC39WAALtGWpS_1mdtV3QtSUEKJF'
-GOOGLE_RECAPTCHA_SECRET_KEY = '6Lfn-SEjAAAAAF8bP0zBW7UE1q-6-Hs8NLJ7uGWs'
+# SYSTEM CHECKS TO BE IGNORED
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 # Application definition
 
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     'carComm_app',
     'mathfilters',
     'django.contrib.humanize',
+    'captcha',
 ]
 
 MIDDLEWARE = [

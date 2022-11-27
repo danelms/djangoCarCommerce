@@ -19,6 +19,7 @@
   }
 </style>
 
+
 <!-- ======= Contact Section ======= -->
 <div id="contact" class="contact-area">
     <div class="contact-inner area-padding">
@@ -83,10 +84,8 @@
             <form method="POST" style="width:100%;">
               {% csrf_token %}
               {{contactForm.as_p}}
-              <button type="submit" class="g-recaptcha"
-              data-sitekey="reCAPTCHA_site_key"
-              data-callback='onSubmit'
-              data-action='submit'>Submit</button>
+              <button type="submit">Submit</button>
+              <p><br><b>{{confirmation}}</b></p>
             </form>
           </div>
 
@@ -95,5 +94,7 @@
       </div>
     </div>
   </div><!-- End Contact Section -->
+  
+  <script async src="https://www.google.com/recaptcha/api.js"></script>
 
   {% endblock content %}
