@@ -22,7 +22,7 @@ class Listing(models.Model):
     def __str__(self) -> str:
         return self.make + " " + self.model + ", " + self.registration
 
-    def getColour() -> str:
+    def getColour(self) -> str:
         return self.colour
 
 class ListingImage(models.Model):
@@ -42,3 +42,4 @@ class Queries(models.Model):
         uniqueMakes = Listing.objects.all().order_by('make').values_list('make', flat=True).distinct()
         
         return uniqueMakes
+

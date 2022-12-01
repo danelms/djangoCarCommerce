@@ -15,8 +15,9 @@
   .control-label {
     font-weight: bold;
   }
-  input {
-    width: 50%;
+  input, select {
+    width: 35%;
+    text-align: center;
   }
 </style>
 
@@ -27,7 +28,7 @@
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="section-headline text-center">
-                <h2><br>All cars</h2>
+                <h2 style="margin-bottom:30px;"><br>All cars</h2>
                 <form method="get" style="margin-bottom:20px;">
                   {{listingFilter.form|crispy}}
                   <button class="btn" style="background-color:#3ec1d5;color:white;margin-top:10px;" type="submit">Filter</button>
