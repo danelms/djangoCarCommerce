@@ -6,7 +6,18 @@ class ListingFilter(django_filters.FilterSet):
     make = django_filters.ChoiceFilter(lookup_expr='iexact',empty_label="All makes")
     colour = django_filters.ChoiceFilter(lookup_expr='iexact',empty_label="All colours")
     mileage__lt = django_filters.NumberFilter(field_name='mileage', lookup_expr='lte',label="Maximum mileage") 
-    price_lt = django_filters.NumberFilter(field_name='price', lookup_expr='lte',label="Maximum price") 
+    price_lt = django_filters.NumberFilter(field_name='price', lookup_expr='lte',label="Maximum price")
+    ordering_filters = django_filters.OrderingFilter(label='Order results by', fields=['price', 'mileage', 'year'], empty_label="Most recently added")
+
+    #Custom labels
+    ordering_filters.field.choices=[
+        ('price', 'Price - Highest to lowest'),
+        ('-price', 'Price - Lowest to highest'),
+        ('mileage', 'Mileage - Highest to lowest'),
+        ('-mileage', 'Mileage - Lowest to highest'),
+        ('year', 'Year - Newest to oldest'),
+        ('-year', 'Year - Oldest to Newest'),
+    ]
 
     class Meta:
         model = Listing
@@ -23,5 +34,3 @@ class ListingFilter(django_filters.FilterSet):
             (colour, colour) for colour in Queries.uniqueColours()
         ]
         
-
-

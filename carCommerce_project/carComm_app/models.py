@@ -18,6 +18,7 @@ class Listing(models.Model):
     thumbnail = models.ImageField(upload_to='images/')
     description = models.TextField(max_length=2500)
     price = models.FloatField(validators=[MinValueValidator(0.01)])
+    pending_sale = models.BooleanField(default=False)
     
     def __str__(self) -> str:
         return self.make + " " + self.model + ", " + self.registration

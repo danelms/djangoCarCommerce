@@ -48,12 +48,16 @@
                         <div class="text-center">
                         <!-- Product name -->
                         <h5 class="fw-bolder">{{listing.make|capfirst}} {{listing.model|capfirst}}</h5>
-                        <!-- Product price -->
-                        £{{listing.price|floatformat:2|intcomma}}<br>
-                        <!-- Product age -->
-                        Year: {{listing.year}}<br>
-                        <!-- Product mileage -->
-                        Mileage: {{listing.mileage|intcomma}} miles
+                        {% if listing.pending_sale == True %}
+                            <h5 style="color:rgb(172, 0, 0);">Sold, pending payment</h5>
+                          {% else %}
+                            <!-- Product price -->  
+                            £{{listing.price|floatformat:2|intcomma}}<br>
+                            <!-- Product age -->
+                            Year: {{listing.year}}<br>
+                            <!-- Product mileage -->
+                            Mileage: {{listing.mileage|intcomma}} miles
+                          {% endif %}
                         </div>
                     </div>
                     <!-- Product actions-->

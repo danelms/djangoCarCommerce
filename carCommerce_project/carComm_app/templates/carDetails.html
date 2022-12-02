@@ -62,8 +62,12 @@
             <h4><b>Mileage:</b> {{listing.mileage|intcomma}} miles</h4>
             <h4><b>Description:</b></h4>
             <p>{{listing.description}}</p>
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" style="font-size:20pt;margin-top:25px!important;">Book a test drive</a></div>
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" style="font-size:20pt;margin-top:25px!important;">Buy now</a></div>
+            {% if listing.pending_sale == False %}
+              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" style="font-size:20pt;margin-top:25px!important;">Purchase</a></div>
+            {% else %}
+              <h3 style="color:rgb(172, 0, 0);width:100%;text-align:center;">Sold, pending payment</h3>
+              <h4 style="color:rgb(172, 0, 0);width:100%;text-align:center;">In the unlikely event that for whatever reason this sale doesn't go through, this car may become available again.<br>To avoid disappointment, we recommend treating it as sold for now.</h4>
+            {% endif %}
         </div>
     </div>
 
