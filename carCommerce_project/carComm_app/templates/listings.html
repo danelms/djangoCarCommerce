@@ -28,46 +28,50 @@
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="section-headline text-center">
-                <h2 style="margin-bottom:30px;"><br>All cars</h2>
+                <h2 style="margin-bottom:30px;"><br>All Cars</h2>
                 <form method="get" style="margin-bottom:20px;">
                   {{listingFilter.form|crispy}}
-                  <button class="btn" style="background-color:#3ec1d5;color:white;margin-top:10px;" type="submit">Filter</button>
+                  <button class="btn" id="id_submit" style="background-color:#3ec1d5;color:white;margin-top:10px;" type="submit">Filter</button>
                 </form>
               </div>
             </div>
           </div>
           <div class="row">
             <!-- All car listings-->
-            {% for listing in listingFilter.qs reversed %}
-            <div class="col mb-5" style="min-width: 50%;"> 
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="{{listing.thumbnail.url}}" alt="Car thumbnail" />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                        <!-- Product name -->
-                        <h5 class="fw-bolder">{{listing.make|capfirst}} {{listing.model|capfirst}}</h5>
-                        {% if listing.pending_sale == True %}
-                            <h5 style="color:rgb(172, 0, 0);">Sold, pending payment</h5>
-                          {% else %}
-                            <!-- Product price -->  
-                            £{{listing.price|floatformat:2|intcomma}}<br>
-                            <!-- Product age -->
-                            Year: {{listing.year}}<br>
-                            <!-- Product mileage -->
-                            Mileage: {{listing.mileage|intcomma}} miles
-                          {% endif %}
+            {% if listingFilter.qs|length > 0 %}
+              {% for listing in listingFilter.qs reversed %}
+                <div class="col mb-5" style="min-width: 50%;"> 
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="{{listing.thumbnail.url}}" alt="Car thumbnail" />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                            <!-- Product name -->
+                            <h5 class="fw-bolder">{{listing.make|capfirst}} {{listing.model|capfirst}}</h5>
+                            {% if listing.pending_sale == True %}
+                                <h5 style="color:rgb(172, 0, 0);">Sold, pending payment</h5>
+                              {% else %}
+                                <!-- Product price -->  
+                                £{{listing.price|floatformat:2|intcomma}}<br>
+                                <!-- Product age -->
+                                Year: {{listing.year}}<br>
+                                <!-- Product mileage -->
+                                Mileage: {{listing.mileage|intcomma}} miles
+                              {% endif %}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">                                    
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'carDetails' listing.registration %}">View details</a></div><br>
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">                                    
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'carDetails' listing.registration %}">View details</a></div><br>
-                    </div>
                 </div>
-            </div>
-            {% endfor %}
-
+              {% endfor %}
+            {%else%}
+                <h2 style="text-align:center;margin-top:25px;">No listings match that search criteria</h2>
+                <h3 style="text-align:center;">Try making your filter selection less specific</h3>
+            {% endif%}
           <!-- End car listings-->
           </div>
         </div>
