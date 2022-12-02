@@ -10,7 +10,8 @@ urlpatterns = [
     path('', carComm_app.views.home, name = 'home'),
     path('listings/', carComm_app.views.listings, name = 'listings'),
     path('contact/', carComm_app.views.contact, name = 'contact'),
-    path('carDetails/<str:registration>/', carComm_app.views.carDetails, name ='carDetails')
+    path('carDetails/<str:registration>/', carComm_app.views.carDetails, name ='carDetails'),
+    path('purchaseForm/<str:registration>/', carComm_app.views.purchaseForm, name = 'purchaseForm')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'captcha',
     'django_filters',
     'crispy_forms',
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [
