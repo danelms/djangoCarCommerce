@@ -16,7 +16,7 @@ class ListingFilter(django_filters.FilterSet):
         super(ListingFilter, self).__init__(*args, **kwargs)
 
         self.filters['make'].extra['choices'] = [
-            (make.capitalize(), make.capitalize()) for make in Queries.uniqueMakes()
+            (make, make) for make in Queries.uniqueMakes()
         ]
 
         self.filters['colour'].extra['choices'] = [
