@@ -31,12 +31,13 @@
 <div class="col-md-6" style="height:70%;width:80%;margin-left:10%;margin-top:150px;">
 
     <h1 style="text-align:center;">Purchase {{listing.make}} {{listing.model}}</h1>
+    <h3 style="text-align:center;">Please enter your details below to have this car reserved</h3>
 
     <form method="POST">
         {% csrf_token %}
         {{purchaseForm.as_p}}
         <button type="submit" id="id_submit">Submit</button>
-        <p><br><b>{{confirmation}}</b></p>
+        <p style="text-align:center;"><br><b>{{confirmation}}</b></p>
     </form>
 
 </div>

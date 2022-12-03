@@ -13,8 +13,6 @@ class FunctionalTestCase(TestCase):
     def test_homepage_content(self):
         #Get base URL
         self.browser.get("http://localhost:8000")
-        #Wait .5 secs
-        time.sleep(0.5)
         #Check for company name
         self.assertIn('CarCommerce', self.browser.page_source)
         #Check for carousel title
@@ -32,8 +30,6 @@ class FunctionalTestCase(TestCase):
     def test_listings_content(self):
         #Get baseURL/listings
         self.browser.get("http://localhost:8000/listings")
-        #Wait .5 secs
-        time.sleep(0.5)
         #Check for company name
         self.assertIn('CarCommerce', self.browser.page_source)
         #Check for page title
@@ -52,8 +48,6 @@ class FunctionalTestCase(TestCase):
     def test_listings_empty(self):
         #Get baseURL/listing + filter string
         self.browser.get("http://127.0.0.1:8000/listings/?make=&colour=&mileage__lt=1&price_lt=&ordering_filters=")
-        #Wait 0.5 secs
-        time.sleep(0.5)
         #Check for error message
         self.assertIn("No listings match", self.browser.page_source)
 
@@ -61,8 +55,6 @@ class FunctionalTestCase(TestCase):
     def test_contact_content(self):
         #Get baseURL/contact
         self.browser.get("http://localhost:8000/contact")
-        #Wait .5 secs
-        time.sleep(0.5)
         #Check for company name
         self.assertIn('CarCommerce', self.browser.page_source)
         #Check for page title
@@ -74,8 +66,6 @@ class FunctionalTestCase(TestCase):
     def test_contact_form_captcha_unchecked(self):
         #Get baseURL/contact
         self.browser.get("http://localhost:8000/contact")
-        #Wait .5 secs
-        time.sleep(0.5)
         #Find text input for name
         nameinput = self.browser.find_element(By.ID, 'id_name')
         #Enter some text
@@ -101,12 +91,12 @@ class FunctionalTestCase(TestCase):
         #Check for reloaded page with updated message
         self.assertIn('Did you complete the reCAPTCHA', self.browser.page_source)
 
+        ###Due to the nature of captchas, testing with ticked checkbox will have to be performed manually
+
     #Check cardetails page for unsold car shows purchase button and car's details
     def test_cardetails_available(self):
         #Get baseURL/carDetails + reg of unsold car
         self.browser.get("http://localhost:8000/carDetails/F454%20DEY/")
-        #Wait .5 secs
-        time.sleep(0.5)
         #Check for car name
         self.assertIn('Volkswagen Scirocco', self.browser.page_source)
         #Check for purchase button text
@@ -116,8 +106,6 @@ class FunctionalTestCase(TestCase):
     def test_cardetials_unavailable(self):
         #Get baseURL/carDetails + reg of sold (pending) car
         self.browser.get("http://localhost:8000/carDetails/N211%20WKL/")
-        #Wait .5 secs
-        time.sleep(0.5)
         #Check for car name
         self.assertIn('Volkswagen Corrado', self.browser.page_source)
         #Check there's no purchase button text
@@ -125,7 +113,41 @@ class FunctionalTestCase(TestCase):
         #Check the sold message is present
         self.assertIn('Sold, pending payment', self.browser.page_source)
 
-
+    #Check purchase form for expected content
+    def test_purchaseform(self):
+        #Get baseURL/purchaseForm + car reg
+        self.browser.get("http://127.0.0.1:8000/purchaseForm/F454%20DEY/")
+        #Check for title text, including name of vehicle
+        self.assertIn('Purchase Volkswagen Scirocco', self.browser.page_source)
+        #Check error message not present
+        self.assertNotIn('Your purchase request has been sent', self.browser.page_source)
+        #Check confirmation message not present
+        self.assertNotIn('we were unable to sbmit this purchase request', self.browser.page_source)
+    
+    #Check form functionality with captcha unchecked (check for error message)
+    def test_pruchaseform_captcha_unchecked(self):
+        #Get baseURL/purchaseForm + car reg
+        self.browser.get("http://127.0.0.1:8000/purchaseForm/F454%20DEY/")
+        #Find text input for name
+        nameinput = self.browser.find_element(By.ID, 'id_name')
+        #Enter some text
+        nameinput.send_keys('TEST NAME')
+        #Find text input for email
+        emailinput = self.browser.find_element(By.ID, 'id_email_address')
+        #Enter some text
+        emailinput.send_keys('TESTEMAIL@EMAIL.UK')
+        #Find text input for phone number
+        phoneinput = self.browser.find_element(By.ID, 'id_phone')
+        #Enter a valid phone number
+        phoneinput.send_keys('+447123456789')
+        #Find submit button
+        submitbutton = self.browser.find_element(By.ID, 'id_submit')
+        #Click submit button
+        submitbutton.click()
+        #Wait for 0.5 secs
+        time.sleep(0.5)
+        #Check for error message
+        self.assertIn('we were unable to submit this purchase request', self.browser.page_source)
 
     #On finish
     def tearDown(self):
