@@ -1,6 +1,0 @@
-REFERENCES
-https://www.geeksforgeeks.org/how-to-add-google-recaptcha-to-django-forms/
-https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend
-https://pypi.org/project/django-filter/
-https://ordinarycoders.com/blog/article/render-forms-with-django-crispy-forms
-https://www.youtube.com/watch?v=TTeNn3kNWD8
